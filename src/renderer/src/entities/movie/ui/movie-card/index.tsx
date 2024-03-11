@@ -40,7 +40,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   return (
     <StyledBox>
       <LazyImage
-        uri={movie.poster}
+        uri={`${movie.poster}?w=${movie.dimension?.width}&auto=format`}
         placeholder={`https://placehold.co/${movie.dimension?.width}x${movie.dimension?.height}/000000/FFFFFF.png`}
         render={(src) => (
           <img
@@ -50,6 +50,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
               height: '100%'
             }}
             src={src}
+            srcSet={`${src}&dpr=1 1x`}
             alt={movie.title}
           />
         )}
