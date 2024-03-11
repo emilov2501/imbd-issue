@@ -69,10 +69,10 @@ const MovieDetail = () => {
         }}
       >
         <Grid container boxSizing="border-box" columnGap={2} rowGap={2}>
-          <Grid lg={4}>
+          <Grid lg={4} sm={4}>
             <MoviePoster />
           </Grid>
-          <Grid lg>
+          <Grid lg sm>
             <MovieInfoBlock />
           </Grid>
         </Grid>
