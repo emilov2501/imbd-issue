@@ -35,10 +35,6 @@ export const MassonryMovieList = () => {
       <Masonry
         columns={4}
         spacing={0}
-        defaultHeight={450}
-        defaultColumns={4}
-        defaultSpacing={1}
-        sequential
         sx={{
           alignContent: 'center',
           margin: 0

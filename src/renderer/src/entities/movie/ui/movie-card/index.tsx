@@ -1,5 +1,6 @@
-import { Box, Skeleton, styled } from '@mui/material'
+import { Box, styled } from '@mui/material'
 import React from 'react'
+import LazyImage from 'react-lazy-blur-image'
 import { MovieEntity } from '../../model/movie.model'
 
 interface MovieCardProps {
@@ -38,21 +39,21 @@ const StyledBox = styled(Box)(() => ({
 export const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   return (
     <StyledBox>
-      {movie.poster ? (
-        <img
-          alt={movie.title}
-          src={movie.poster}
-          style={{
-            display: 'block',
-            width: '100%',
-            height: '100%'
-          }}
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <Skeleton sx={{ height: 290 }} animation="wave" variant="rectangular" />
-      )}
+      <LazyImage
+        uri={movie.poster}
+        placeholder={'https://placehold.co/600x800/000000/FFFFFF.png'}
+        render={(src) => (
+          <img
+            style={{
+              display: 'block',
+              width: '100%',
+              height: '100%'
+            }}
+            src={src}
+            alt={movie.title}
+          />
+        )}
+      />
       <Label>{movie.title}</Label>
     </StyledBox>
   )
