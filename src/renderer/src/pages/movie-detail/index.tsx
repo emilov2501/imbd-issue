@@ -3,6 +3,7 @@ import { AppBar, Box, Grid, IconButton, Toolbar, Typography } from '@mui/materia
 import CircularProgress from '@mui/material/CircularProgress'
 import CssBaseline from '@mui/material/CssBaseline'
 import { MovieInfoBlock, MoviePoster, movieModel } from '@renderer/entities/movie'
+import { MovieReviewList } from '@renderer/widgets/movie-review-list'
 import compose from 'compose-function'
 import { useNavigate } from 'react-router-dom'
 import { WithLoadMovie } from './lib/hoc/with-load-movie'
@@ -74,6 +75,17 @@ const MovieDetail = () => {
             <MovieInfoBlock />
           </Grid>
         </Grid>
+      </Box>
+
+      <Box
+        sx={{
+          marginBlock: '15px',
+          paddingInline: '15px',
+          boxSizing: 'border-box'
+        }}
+      >
+        <h2>FEATURED REVIEW</h2>
+        <MovieReviewList />
       </Box>
     </>
   )
