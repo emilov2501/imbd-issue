@@ -1,4 +1,5 @@
 import { movieModel } from '@renderer/entities/movie'
+import { reviewModel } from '@renderer/entities/reviews'
 import { http } from '@renderer/shared/api'
 import { useQuery } from '@tanstack/react-query'
 import get from 'lodash.get'
@@ -29,6 +30,8 @@ export const WithLoadMovie = (Component: ComponentType) => {
       const poster = get(data, 'fake.#IMG_POSTER', '')
       const actors = get(data, 'fake.#ACTORS', '')
       const reviews = get(data, 'main.reviews.total', 0)
+      const featured = get(data, 'main.featuredReviews.edges', [])
+
       movieModel.addMovie(
         movieModel.mapMovie({
           ...get(data, 'short'),
@@ -37,6 +40,8 @@ export const WithLoadMovie = (Component: ComponentType) => {
           reviews
         })
       )
+
+      reviewModel.addReviews(featured.map(reviewModel.mapReviews))
     }
 
     return <Component />
